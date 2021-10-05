@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" id="html">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap" rel="stylesheet">
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="styles/style.css" />
+
+	<title>CryptoDex</title>
+</head>
+
+<nav>
+	<span>
+		<ul id="navbar">
+			<li>CryptoDex</li>
+			<li data-bs-toggle="modal" data-bs-target="#exampleModal">readMe</li>
+
+		</ul>
+	</span>
+</nav>
+<main class="dark" id="main">
+
+	<body class="dark" id="body">
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<button class="nav-link active dark" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+					type="button" role="tab" aria-controls="nav-home" aria-selected="true">Trending</button>
+				<button class="nav-link dark" id="nav-search-tab" data-bs-toggle="tab" data-bs-target="#nav-search"
+					type="button" role="tab" aria-controls="nav-search" aria-selected="false">Search</button>
+				<button class="nav-link dark" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+					type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Events</button>
+				<span class="darktoggle">
+					<h2>Dark Mode</h2>
+					<label class="switch">
+						<input type="checkbox" class="darkSwitch">
+						<span class="slider round"></span>
+					</label>
+				</span>
+			</div>
+
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<section class="tickers">
+					<span>
+						<h1 class="col-12">Trending Tickers</h1>
+					</span>
+					<div>
+						<ul class="col">
+							<!-- hover for more info?-->
+
+							<li class="legend">Ticker - Name<span>More Info</span></li>
+							<hr />
+							<hr>
+
+							<li id="loadicon"><img src="assets/loadicon.gif" alt=""></li>
+
+							<li class="dropbtn">
+								<img class="zeroth" src="" alt="">
+								<span class="zero"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt=""
+										id="zeroprice" class=""></span>
+							</li>
+
+							<hr />
+							<li>
+								<img class="first" src="" alt="">
+								<span class="one"> </span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt="" id="oneprice"
+										class=""></span>
+							</li>
+							<hr />
+							<li>
+								<img class="second" src="" alt="">
+								<span class="two"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt="" id="twoprice"
+										class=""></span>
+							</li>
+							<hr />
+							<li>
+								<img class="third" src="" alt="">
+								<span class="three"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt=""
+										id="threeprice" class=""></span>
+							</li>
+							<hr />
+							<li>
+								<img class="fourth" src="" alt="">
+								<span class="four"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt=""
+										id="fourprice" class=""></span>
+							</li>
+							<hr />
+							<li>
+								<img class="fifth" src="" alt="">
+								<span class="five"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt=""
+										id="fiveprice" class=""></span>
+							</li>
+							<hr />
+							<li>
+								<img class="sixth" src="" alt="">
+								<span class="six"></span>
+								<span class="na hidden" id="unhideme"><img src="assets/magnify.svg" alt="" id="sixprice"
+										class=""></span>
+							</li>
+							<hr>
+
+						</ul>
+
+
+						</span>
+				</section>
+				<span class="bttcontainer"><img src="assets/upicon.png" alt="" class="bttimage"></span>
+			</div>
+
+
+			<div class="tab-pane fade searchtab" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
+				<span>
+					<h1>Search Crypto</h1>
+
+
+					<form action="submit" id="tickersearch">
+						<input type="text" class="tickerinput" placeholder="Enter Coin Name" />
+						<button id="getPrice">Go</button>
+					</form>
+				</span>
+				<hr>
+				<div class="searchresult" id="searchresult">
+
+
+					<div class="insertimage">
+
+						<img src="" alt="" id="resimage" class="resimage hidden">
+
+						<span>
+							<span>
+								<h3 class="searchresultname"></h3>
+
+								<h3 class="searchresultprice"></h3>
+							</span>
+
+							<span>
+
+								<h4 class="searchresultticker"></h4>
+								<h4 class="searchresultdailypricechange"></h4>
+
+							</span>
+						</span>
+					</div>
+					<p class="searchresultdesc"></p>
+				</div>
+
+			</div>
+
+			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+				<span>
+					<h1 class="col-12">Events</h1>
+				</span>
+				<hr>
+				<!-- placeholder for news articles-->
+				<div class="eventresult">
+
+
+					<div class="insertimage">
+
+						<img src="assets/Bitcoin.svg" alt="" id="evimage1">
+
+						<span>
+							<span>
+								<h3 class="eventrestitle1"></h3>
+
+								<h3 class="eventrescity1"></h3>
+
+
+								<h4 class="eventresvenue1"></h4>
+								<h4 class="eventressd1"></h4>
+
+							</span>
+						</span>
+					</div>
+					<p class="eventresdesc"></p>
+					<h5 class="eventwebsite1"></h5>
+				</div>
+				<div class="eventresult2">
+
+
+					<div class="insertimage">
+
+						<img src="assets/Bitcoin.svg" alt="" id="evimage2">
+
+						<span>
+							<span>
+								<h3 class="eventrestitle2"></h3>
+
+								<h3 class="eventrescity2"></h3>
+
+
+								<h4 class="eventresvenue2"></h4>
+								<h4 class="eventressd2"></h4>
+
+							</span>
+						</span>
+					</div>
+					<p class="eventresdesc2"></p>
+					<h5 class="eventwebsite2"></h5>
+				</div>
+				<div class="eventresult3">
+
+
+					<div class="insertimage">
+
+						<img src="assets/Bitcoin.svg" alt="" id="evimage3">
+
+						<span>
+							<span>
+								<h3 class="eventrestitle3"></h3>
+
+								<h3 class="eventrescity3"></h3>
+
+
+								<h4 class="eventresvenue3"></h4>
+								<h4 class="eventressd3"></h4>
+
+							</span>
+						</span>
+					</div>
+					<p class="eventresdesc3"></p>
+					<h5 class="eventwebsite3"></h5>
+				</div>
+
+				<span class="bttcontainer"><img src="assets/upicon.png" alt="" class="bttimage"></span>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content dark" id="mc">
+					<div class="modal-header">
+						<h6 class="modal-title" id="exampleModalLabel">CryptoDex.readMe</h6>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Thank you for taking the time to check out the CryptoDex! To make this small app I used
+							various techniques ranging from simple things like bootstrap for the tab switcher, (and this
+							modal!), to more complex techniques such as API requests for pretty much all of the data
+							shown on the page.</p>
+						<h7>Difficulties: API's</h7>
+
+						<p>There were a number of difficulties with the APIs, for example finding the right API to
+							return the exact data that I wanted to display. The biggest issue I was having was that
+							although the
+							trending ticker API returned the top 7 trending coins, it didn't return any price data for
+							them, so I didnt have a way to display it. </p>
+						<h7>Solution</h7>
+						<p>Without the API returning any price data, I thought the best way to display it would be to
+							add a 'more info' button next to the coin name on the trending coins tab that then switches
+							to the
+							search tab and uses the search API function to manually search for the ticker, allowing
+							for a display of not oinly the price data but also various other data such as a short
+							description and daily price movement of the coin.</p>
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="script.js" type="module"></script>
+</body>
+
+</html>
